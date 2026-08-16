@@ -7,396 +7,713 @@
 
 <style>
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #f3f5f7;
-    color: #17202a;
+  font-family: Arial, sans-serif;
+  background: #f5f7fa;
+  color: #17202a;
 }
 
-header {
-    background: #111827;
-    color: white;
-    padding: 22px 30px;
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 230px;
+  background: #111827;
+  color: white;
+  padding: 28px 18px;
 }
 
-header h1 {
-    font-size: 28px;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 35px;
 }
 
-header p {
-    margin-top: 5px;
-    color: #b8c2cc;
+.logo span {
+  color: #60a5fa;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 0 20px;
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.hero {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+.nav button {
+  background: transparent;
+  color: #cbd5e1;
+  border: none;
+  text-align: left;
+  padding: 13px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 15px;
 }
 
-.hero h2 {
-    font-size: 26px;
-    margin-bottom: 8px;
+.nav button:hover,
+.nav button.active {
+  background: #1f2937;
+  color: white;
 }
 
-.hero p {
-    color: #667085;
+/* MAIN */
+.main {
+  margin-left: 230px;
+  padding: 35px;
+  max-width: 1400px;
 }
 
-.ask-box {
-    margin-top: 22px;
-    display: flex;
-    gap: 10px;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.ask-box input {
-    flex: 1;
-    padding: 15px;
-    border: 1px solid #d0d5dd;
-    border-radius: 10px;
-    font-size: 16px;
+.topbar h1 {
+  font-size: 30px;
 }
 
-button {
-    background: #111827;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 14px 20px;
-    cursor: pointer;
-    font-weight: bold;
+.topbar p {
+  color: #667085;
+  margin-top: 5px;
 }
 
-button:hover {
-    background: #293548;
+.account {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
 }
 
+/* ASK */
+.ask {
+  background: linear-gradient(135deg, #111827, #243247);
+  color: white;
+  padding: 30px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+.ask h2 {
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+
+.ask p {
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+.askbox {
+  display: flex;
+  gap: 10px;
+}
+
+.askbox input {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+button.primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button.primary:hover {
+  background: #1d4ed8;
+}
+
+/* CARDS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.stat {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-number {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.stat-label {
+  color: #667085;
+}
+
+/* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
 }
 
 .card h3 {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d0d5dd;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    font-size: 15px;
+/* FORMS */
+input,
+textarea {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 9px;
+  font-size: 15px;
 }
 
 textarea {
-    min-height: 110px;
-    resize: vertical;
+  height: 110px;
+  resize: vertical;
+}
+
+.file-label {
+  display: block;
+  padding: 13px;
+  background: #f3f4f6;
+  border-radius: 9px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.file-label input {
+  display: none;
+}
+
+/* JOBS */
+.search {
+  margin-bottom: 15px;
 }
 
 .job {
-    border: 1px solid #e1e5ea;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 17px;
+  border-radius: 11px;
+  margin-bottom: 10px;
 }
 
 .job h4 {
-    margin-bottom: 5px;
+  font-size: 17px;
+  margin-bottom: 7px;
 }
 
 .job p {
-    color: #667085;
-    margin: 4px 0;
-}
-
-.answer {
-    margin-top: 15px;
-    background: #eef2ff;
-    padding: 15px;
-    border-radius: 10px;
-    display: none;
-}
-
-.photo-preview {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.photo-preview img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 8px;
+  color: #667085;
+  margin: 4px 0;
 }
 
 .empty {
-    color: #98a2b3;
-    text-align: center;
-    padding: 25px;
+  text-align: center;
+  color: #98a2b3;
+  padding: 30px;
 }
 
-@media(max-width: 750px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
+/* ANSWER */
+.answer {
+  background: white;
+  color: #17202a;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 10px;
+  display: none;
+}
 
-    .ask-box {
-        flex-direction: column;
-    }
+/* MOBILE */
+@media(max-width: 800px) {
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .stats,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .askbox {
+    flex-direction: column;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Job Memory</h1>
-    <p>Your company's memory, organized.</p>
-</header>
+<!-- SIDEBAR -->
+<div class="sidebar">
 
-<div class="container">
+  <div class="logo">
+    Job<span>Memory</span>
+  </div>
 
-    <div class="hero">
-        <h2>Ask your business anything.</h2>
-        <p>
-            Search your past jobs, notes, customers and project information.
-        </p>
+  <div class="nav">
+    <button class="active">⌂ Dashboard</button>
+    <button>▣ Jobs</button>
+    <button>♙ Customers</button>
+    <button>▤ Documents</button>
+    <button>⚙ Settings</button>
+  </div>
 
-        <div class="ask-box">
-            <input
-                id="question"
-                placeholder="Example: What jobs did we do for John?"
-            >
-            <button onclick="askMemory()">Ask</button>
-        </div>
+</div>
 
-        <div id="answer" class="answer"></div>
+<!-- MAIN -->
+<div class="main">
+
+  <div class="topbar">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Your company's memory, organized.</p>
     </div>
 
-    <div class="grid">
+    <div class="account">
+      Your Business
+    </div>
+  </div>
 
-        <div class="card">
-            <h3>Add a Job</h3>
+  <!-- AI SEARCH -->
+  <div class="ask">
 
-            <input id="customer" placeholder="Customer name">
+    <h2>Ask your business anything.</h2>
 
-            <input id="project" placeholder="Project name">
+    <p>
+      Search your jobs, customers, notes and project history.
+    </p>
 
-            <input id="location" placeholder="Location">
+    <div class="askbox">
 
-            <textarea
-                id="notes"
-                placeholder="Job notes, materials, measurements, prices, etc."
-            ></textarea>
+      <input
+        id="question"
+        placeholder="Example: What did we do for John Smith?"
+      >
 
-            <label>
-                Add job photos:
-                <input
-                    id="photos"
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onchange="previewPhotos()"
-                >
-            </label>
-
-            <div id="photoPreview" class="photo-preview"></div>
-
-            <button onclick="saveJob()">
-                Save Job
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>Your Jobs</h3>
-
-            <input
-                id="search"
-                placeholder="Search jobs..."
-                oninput="displayJobs()"
-            >
-
-            <div id="jobs"></div>
-        </div>
+      <button class="primary" onclick="askMemory()">
+        Ask
+      </button>
 
     </div>
+
+    <div id="answer" class="answer"></div>
+
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+
+    <div class="stat">
+      <div class="stat-label">Total Jobs</div>
+      <div class="stat-number" id="jobCount">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Customers</div>
+      <div class="stat-number" id="customerCount">0</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Information Stored</div>
+      <div class="stat-number">Ready</div>
+    </div>
+
+  </div>
+
+  <div class="grid">
+
+    <!-- ADD JOB -->
+    <div class="card">
+
+      <h3>＋ Add a Job</h3>
+
+      <input
+        id="customer"
+        placeholder="Customer name"
+      >
+
+      <input
+        id="project"
+        placeholder="Project name"
+      >
+
+      <input
+        id="location"
+        placeholder="Location"
+      >
+
+      <textarea
+        id="notes"
+        placeholder="Job notes, materials, measurements, prices..."
+      ></textarea>
+
+      <label class="file-label">
+        📷 Add job photos
+        <input
+          id="photos"
+          type="file"
+          accept="image/*"
+          multiple
+          onchange="previewPhotos()"
+        >
+      </label>
+
+      <div id="photoPreview"></div>
+
+      <button
+        class="primary"
+        onclick="saveJob()"
+      >
+        Save Job
+      </button>
+
+    </div>
+
+    <!-- JOBS -->
+    <div class="card">
+
+      <h3>Your Jobs</h3>
+
+      <input
+        class="search"
+        id="search"
+        placeholder="Search your jobs..."
+        oninput="displayJobs()"
+      >
+
+      <div id="jobs"></div>
+
+    </div>
+
+  </div>
+
 </div>
 
 <script>
 
-let jobs = JSON.parse(localStorage.getItem("jobMemoryJobs")) || [];
+let jobs =
+  JSON.parse(localStorage.getItem("jobMemoryJobs")) || [];
+
+
+/* SAVE JOB */
 
 function saveJob() {
 
-    const customer = document.getElementById("customer").value.trim();
-    const project = document.getElementById("project").value.trim();
-    const location = document.getElementById("location").value.trim();
-    const notes = document.getElementById("notes").value.trim();
+  const customer =
+    document.getElementById("customer").value.trim();
 
-    if (!customer || !project) {
-        alert("Please enter a customer name and project name.");
-        return;
-    }
+  const project =
+    document.getElementById("project").value.trim();
 
-    const job = {
-        customer: customer,
-        project: project,
-        location: location,
-        notes: notes,
-        date: new Date().toLocaleDateString()
-    };
+  const location =
+    document.getElementById("location").value.trim();
 
-    jobs.push(job);
+  const notes =
+    document.getElementById("notes").value.trim();
 
-    localStorage.setItem(
-        "jobMemoryJobs",
-        JSON.stringify(jobs)
-    );
+  if (!customer || !project) {
 
-    document.getElementById("customer").value = "";
-    document.getElementById("project").value = "";
-    document.getElementById("location").value = "";
-    document.getElementById("notes").value = "";
-    document.getElementById("photos").value = "";
-    document.getElementById("photoPreview").innerHTML = "";
+    alert("Please enter a customer and project.");
 
-    displayJobs();
+    return;
+  }
 
-    alert("Job saved!");
+  const job = {
+
+    customer,
+    project,
+    location,
+    notes,
+
+    date:
+      new Date().toLocaleDateString()
+
+  };
+
+  jobs.push(job);
+
+  localStorage.setItem(
+    "jobMemoryJobs",
+    JSON.stringify(jobs)
+  );
+
+  document.getElementById("customer").value = "";
+  document.getElementById("project").value = "";
+  document.getElementById("location").value = "";
+  document.getElementById("notes").value = "";
+  document.getElementById("photos").value = "";
+
+  document.getElementById("photoPreview").innerHTML = "";
+
+  displayJobs();
+
+  alert("Job saved successfully.");
 }
+
+
+/* DISPLAY JOBS */
 
 function displayJobs() {
 
-    const container = document.getElementById("jobs");
-    const search = document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+  const container =
+    document.getElementById("jobs");
 
-    container.innerHTML = "";
+  const search =
+    document.getElementById("search")
+      .value
+      .toLowerCase();
 
-    const filtered = jobs.filter(job =>
-        job.customer.toLowerCase().includes(search) ||
-        job.project.toLowerCase().includes(search) ||
-        job.location.toLowerCase().includes(search) ||
-        job.notes.toLowerCase().includes(search)
+  container.innerHTML = "";
+
+  const filtered =
+    jobs.filter(job =>
+
+      job.customer.toLowerCase().includes(search) ||
+
+      job.project.toLowerCase().includes(search) ||
+
+      job.location.toLowerCase().includes(search) ||
+
+      job.notes.toLowerCase().includes(search)
+
     );
 
-    if (filtered.length === 0) {
-        container.innerHTML =
-            '<div class="empty">No jobs found.</div>';
-        return;
-    }
+  if (filtered.length === 0) {
+
+    container.innerHTML =
+      '<div class="empty">No jobs found.</div>';
+
+  } else {
 
     filtered.forEach(job => {
 
-        const div = document.createElement("div");
-        div.className = "job";
+      const div =
+        document.createElement("div");
 
-        div.innerHTML = `
-            <h4>${escapeHTML(job.project)}</h4>
-            <p><strong>Customer:</strong> ${escapeHTML(job.customer)}</p>
-            <p><strong>Location:</strong> ${escapeHTML(job.location)}</p>
-            <p><strong>Notes:</strong> ${escapeHTML(job.notes)}</p>
-            <p><small>Added ${escapeHTML(job.date)}</small></p>
-        `;
+      div.className = "job";
 
-        container.appendChild(div);
+      div.innerHTML = `
+
+        <h4>${escapeHTML(job.project)}</h4>
+
+        <p>
+          <strong>Customer:</strong>
+          ${escapeHTML(job.customer)}
+        </p>
+
+        <p>
+          <strong>Location:</strong>
+          ${escapeHTML(job.location)}
+        </p>
+
+        <p>
+          ${escapeHTML(job.notes)}
+        </p>
+
+        <p>
+          <small>Added ${escapeHTML(job.date)}</small>
+        </p>
+
+      `;
+
+      container.appendChild(div);
+
     });
+
+  }
+
+  updateStats();
 }
+
+
+/* STATS */
+
+function updateStats() {
+
+  document.getElementById("jobCount")
+    .textContent = jobs.length;
+
+  const customers =
+    new Set(
+      jobs.map(job => job.customer.toLowerCase())
+    );
+
+  document.getElementById("customerCount")
+    .textContent = customers.size;
+}
+
+
+/* ASK MEMORY */
 
 function askMemory() {
 
-    const question = document
-        .getElementById("question")
-        .value
-        .toLowerCase();
+  const question =
+    document.getElementById("question")
+      .value
+      .toLowerCase();
 
-    const answer = document.getElementById("answer");
+  const answer =
+    document.getElementById("answer");
 
-    if (!question) return;
+  if (!question) return;
 
-    const matches = jobs.filter(job =>
-        question.includes(job.customer.toLowerCase()) ||
-        question.includes(job.project.toLowerCase()) ||
-        question.includes(job.location.toLowerCase())
-    );
+  const words =
+    question.split(/\s+/);
 
-    if (matches.length > 0) {
+  const matches =
+    jobs.filter(job => {
 
-        answer.innerHTML =
-            "<strong>I found these jobs:</strong><br><br>" +
-            matches.map(job =>
-                `${escapeHTML(job.project)} — ${escapeHTML(job.customer)} (${escapeHTML(job.location)})`
-            ).join("<br>");
+      const text =
+        (
+          job.customer +
+          " " +
+          job.project +
+          " " +
+          job.location +
+          " " +
+          job.notes
+        ).toLowerCase();
 
-    } else {
+      return words.some(word =>
+        word.length > 2 &&
+        text.includes(word)
+      );
 
-        answer.innerHTML =
-            "I couldn't find a matching job yet. Once more information is added, I'll be able to search it.";
+    });
 
-    }
+  if (matches.length) {
 
-    answer.style.display = "block";
+    answer.innerHTML =
+      "<strong>I found:</strong><br><br>" +
+
+      matches.map(job =>
+
+        `<strong>${escapeHTML(job.project)}</strong>
+        — ${escapeHTML(job.customer)}
+        <br>
+        ${escapeHTML(job.location)}
+        <br>
+        ${escapeHTML(job.notes)}`
+
+      ).join("<br><br>");
+
+  } else {
+
+    answer.innerHTML =
+      "I couldn't find anything matching that question yet.";
+
+  }
+
+  answer.style.display = "block";
 }
+
+
+/* PHOTO PREVIEW */
 
 function previewPhotos() {
 
-    const files = document.getElementById("photos").files;
-    const preview = document.getElementById("photoPreview");
+  const files =
+    document.getElementById("photos").files;
 
-    preview.innerHTML = "";
+  const preview =
+    document.getElementById("photoPreview");
 
-    for (let file of files) {
+  preview.innerHTML =
+    "<p style='margin-bottom:10px;color:#667085;'>Photos selected:</p>";
 
-        const reader = new FileReader();
+  for (const file of files) {
 
-        reader.onload = function(e) {
+    const reader =
+      new FileReader();
 
-            const img = document.createElement("img");
+    reader.onload =
+      function(event) {
 
-            img.src = e.target.result;
+        const img =
+          document.createElement("img");
 
-            preview.appendChild(img);
-        };
+        img.src =
+          event.target.result;
 
-        reader.readAsDataURL(file);
-    }
+        img.style.width = "80px";
+        img.style.height = "80px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "8px";
+        img.style.marginRight = "8px";
+        img.style.marginBottom = "10px";
+
+        preview.appendChild(img);
+
+      };
+
+    reader.readAsDataURL(file);
+  }
 }
+
+
+/* SECURITY */
 
 function escapeHTML(text) {
 
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+  return text
+
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
 }
+
 
 displayJobs();
 
