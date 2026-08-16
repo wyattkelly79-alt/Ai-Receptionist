@@ -7,133 +7,373 @@
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f7fa;color:#17202a}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fa;
+color:#17202a
+}
 
 .sidebar{
-position:fixed;left:0;top:0;bottom:0;width:230px;
-background:#111827;color:white;padding:28px 18px
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:230px;
+background:#111827;
+color:white;
+padding:28px 18px
 }
 
-.logo{font-size:24px;font-weight:bold;margin-bottom:35px}
+.logo{
+font-size:24px;
+font-weight:bold;
+margin-bottom:35px
+}
+
 .logo span{color:#60a5fa}
 
-.nav{display:flex;flex-direction:column;gap:8px}
-.nav button{
-background:transparent;color:#cbd5e1;border:0;text-align:left;
-padding:13px;border-radius:9px;cursor:pointer;font-size:15px
+.nav{
+display:flex;
+flex-direction:column;
+gap:8px
 }
-.nav button:hover,.nav button.active{background:#1f2937;color:white}
 
-.main{margin-left:230px;padding:35px;max-width:1400px}
+.nav button{
+background:transparent;
+color:#cbd5e1;
+border:0;
+text-align:left;
+padding:13px;
+border-radius:9px;
+cursor:pointer;
+font-size:15px
+}
+
+.nav button:hover,
+.nav button.active{
+background:#1f2937;
+color:white
+}
+
+.main{
+margin-left:230px;
+padding:35px;
+max-width:1400px
+}
 
 .topbar{
-display:flex;justify-content:space-between;align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
 margin-bottom:30px
 }
 
 .topbar h1{font-size:30px}
-.topbar p{color:#667085;margin-top:5px}
+
+.topbar p{
+color:#667085;
+margin-top:5px
+}
 
 .account{
-background:white;padding:10px 15px;border-radius:10px;
+background:white;
+padding:10px 15px;
+border-radius:10px;
 border:1px solid #e5e7eb
-}
-
-.ask{
-background:linear-gradient(135deg,#111827,#243247);
-color:white;padding:30px;border-radius:18px;margin-bottom:25px
-}
-
-.ask h2{font-size:25px;margin-bottom:7px}
-.ask p{color:#cbd5e1;margin-bottom:20px}
-
-.askbox{display:flex;gap:10px}
-.askbox input{
-flex:1;padding:15px;border-radius:10px;border:0;font-size:16px
-}
-
-button.primary{
-background:#2563eb;color:white;border:0;padding:14px 22px;
-border-radius:10px;cursor:pointer;font-weight:bold
-}
-
-button.primary:hover{background:#1d4ed8}
-
-.stats{
-display:grid;grid-template-columns:repeat(3,1fr);
-gap:18px;margin-bottom:25px
-}
-
-.stat{
-background:white;padding:22px;border-radius:14px;
-border:1px solid #e5e7eb
-}
-
-.stat-number{font-size:30px;font-weight:bold;margin-top:8px}
-.stat-label{color:#667085}
-
-.grid{
-display:grid;grid-template-columns:1fr 1fr;gap:25px
-}
-
-.card{
-background:white;padding:25px;border-radius:16px;
-border:1px solid #e5e7eb
-}
-
-.card h3{margin-bottom:18px}
-
-input,textarea{
-width:100%;padding:13px;margin-bottom:12px;
-border:1px solid #d0d5dd;border-radius:9px;font-size:15px
-}
-
-textarea{height:110px;resize:vertical}
-
-.search{margin-bottom:15px}
-
-.job{
-border:1px solid #e5e7eb;padding:17px;border-radius:11px;
-margin-bottom:10px
-}
-
-.job h4{font-size:17px;margin-bottom:7px}
-.job p{color:#667085;margin:4px 0}
-
-.customer{
-display:flex;justify-content:space-between;align-items:center;
-border:1px solid #e5e7eb;padding:18px;border-radius:11px;
-margin-bottom:10px
-}
-
-.customer-name{font-weight:bold;font-size:17px}
-.customer-info{color:#667085;margin-top:5px}
-
-.empty{text-align:center;color:#98a2b3;padding:30px}
-
-.answer{
-background:white;color:#17202a;margin-top:18px;
-padding:18px;border-radius:10px;display:none
 }
 
 .page{display:none}
 .page.active{display:block}
 
+.ask{
+background:linear-gradient(135deg,#111827,#243247);
+color:white;
+padding:30px;
+border-radius:18px;
+margin-bottom:25px
+}
+
+.ask h2{
+font-size:25px;
+margin-bottom:7px
+}
+
+.ask p{
+color:#cbd5e1;
+margin-bottom:20px
+}
+
+.askbox{
+display:flex;
+gap:10px
+}
+
+.askbox input{
+flex:1;
+padding:15px;
+border-radius:10px;
+border:0;
+font-size:16px
+}
+
+button.primary{
+background:#2563eb;
+color:white;
+border:0;
+padding:14px 22px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold
+}
+
+button.primary:hover{
+background:#1d4ed8
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-bottom:25px
+}
+
+.stat{
+background:white;
+padding:22px;
+border-radius:14px;
+border:1px solid #e5e7eb
+}
+
+.stat-number{
+font-size:30px;
+font-weight:bold;
+margin-top:8px
+}
+
+.stat-label{color:#667085}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:16px;
+border:1px solid #e5e7eb
+}
+
+.card h3{margin-bottom:18px}
+
+input,textarea,select{
+width:100%;
+padding:13px;
+margin-bottom:12px;
+border:1px solid #d0d5dd;
+border-radius:9px;
+font-size:15px;
+background:white
+}
+
+textarea{
+height:110px;
+resize:vertical
+}
+
+.search{
+margin-bottom:15px
+}
+
+.job{
+border:1px solid #e5e7eb;
+padding:17px;
+border-radius:11px;
+margin-bottom:10px
+}
+
+.job h4{
+font-size:17px;
+margin-bottom:7px
+}
+
+.job p{
+color:#667085;
+margin:4px 0
+}
+
+.customer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+border:1px solid #e5e7eb;
+padding:18px;
+border-radius:11px;
+margin-bottom:10px
+}
+
+.customer-name{
+font-weight:bold;
+font-size:17px
+}
+
+.customer-info{
+color:#667085;
+margin-top:5px
+}
+
+.empty{
+text-align:center;
+color:#98a2b3;
+padding:30px
+}
+
+.answer{
+background:white;
+color:#17202a;
+margin-top:18px;
+padding:18px;
+border-radius:10px;
+display:none
+}
+
 .notice{
-background:#eef4ff;border:1px solid #c7d7fe;
-padding:15px;border-radius:10px;color:#344054;margin-bottom:20px
+background:#eef4ff;
+border:1px solid #c7d7fe;
+padding:15px;
+border-radius:10px;
+color:#344054;
+margin-bottom:20px
+}
+
+/* DOCUMENTS */
+
+.upload-box{
+border:2px dashed #cbd5e1;
+border-radius:14px;
+padding:30px;
+text-align:center;
+margin-bottom:25px;
+background:#f8fafc
+}
+
+.upload-box h3{
+margin-bottom:8px
+}
+
+.upload-box p{
+color:#667085;
+margin-bottom:18px
+}
+
+.file-button{
+display:inline-block;
+background:#2563eb;
+color:white;
+padding:13px 20px;
+border-radius:9px;
+cursor:pointer;
+font-weight:bold
+}
+
+.file-button input{
+display:none
+}
+
+.documents{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
+}
+
+.document{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:15px
+}
+
+.document-icon{
+font-size:40px;
+margin-bottom:10px
+}
+
+.document-name{
+font-weight:bold;
+word-break:break-word
+}
+
+.document-info{
+color:#667085;
+font-size:13px;
+margin-top:6px;
+line-height:1.5
+}
+
+.document-image{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:8px;
+margin-bottom:10px
+}
+
+.delete-btn{
+margin-top:12px;
+background:#f3f4f6;
+border:0;
+padding:8px 12px;
+border-radius:7px;
+cursor:pointer
+}
+
+.delete-btn:hover{
+background:#fee2e2
+}
+
+@media(max-width:900px){
+.documents{
+grid-template-columns:repeat(2,1fr)
+}
 }
 
 @media(max-width:800px){
+
 .sidebar{
-position:static;width:100%;padding:15px
+position:static;
+width:100%;
+padding:15px
 }
+
 .logo{margin-bottom:10px}
-.nav{flex-direction:row;overflow-x:auto}
-.main{margin-left:0;padding:20px}
-.stats,.grid{grid-template-columns:1fr}
-.topbar{align-items:flex-start}
-.askbox{flex-direction:column}
+
+.nav{
+flex-direction:row;
+overflow-x:auto
+}
+
+.main{
+margin-left:0;
+padding:20px
+}
+
+.stats,.grid{
+grid-template-columns:1fr
+}
+
+.topbar{
+align-items:flex-start
+}
+
+.askbox{
+flex-direction:column
+}
+
+.documents{
+grid-template-columns:1fr
+}
 }
 </style>
 </head>
@@ -142,11 +382,14 @@ position:static;width:100%;padding:15px
 
 <div class="sidebar">
 
-<div class="logo">Job<span>Memory</span></div>
+<div class="logo">
+Job<span>Memory</span>
+</div>
 
 <div class="nav">
 
-<button class="active" onclick="showPage('dashboard',this)">
+<button class="active"
+onclick="showPage('dashboard',this)">
 ⌂ Dashboard
 </button>
 
@@ -173,12 +416,18 @@ position:static;width:100%;padding:15px
 <div class="main">
 
 <div class="topbar">
+
 <div>
 <h1 id="pageTitle">Dashboard</h1>
-<p id="pageSubtitle">Your company's memory, organized.</p>
+<p id="pageSubtitle">
+Your company's memory, organized.
+</p>
 </div>
 
-<div class="account">Your Business</div>
+<div class="account">
+Your Business
+</div>
+
 </div>
 
 
@@ -199,7 +448,10 @@ Search your jobs, customers, notes and project history.
 <input id="question"
 placeholder="Example: What did we do for John Smith?">
 
-<button class="primary" onclick="askMemory()">Ask</button>
+<button class="primary"
+onclick="askMemory()">
+Ask
+</button>
 
 </div>
 
@@ -221,8 +473,8 @@ placeholder="Example: What did we do for John Smith?">
 </div>
 
 <div class="stat">
-<div class="stat-label">Information Stored</div>
-<div class="stat-number">Ready</div>
+<div class="stat-label">Documents</div>
+<div class="stat-number" id="documentCount">0</div>
 </div>
 
 </div>
@@ -234,16 +486,20 @@ placeholder="Example: What did we do for John Smith?">
 
 <h3>＋ Add a Job</h3>
 
-<input id="customer" placeholder="Customer name">
+<input id="customer"
+placeholder="Customer name">
 
-<input id="project" placeholder="Project name">
+<input id="project"
+placeholder="Project name">
 
-<input id="location" placeholder="Location">
+<input id="location"
+placeholder="Location">
 
 <textarea id="notes"
 placeholder="Job notes, materials, measurements, prices..."></textarea>
 
-<button class="primary" onclick="saveJob()">
+<button class="primary"
+onclick="saveJob()">
 Save Job
 </button>
 
@@ -269,7 +525,7 @@ Save Job
 
 <div class="notice">
 <strong>All your jobs in one place.</strong><br>
-Search your complete job history and open the information you need.
+Search your complete job history.
 </div>
 
 <div class="card">
@@ -294,7 +550,7 @@ oninput="displayAllJobs()">
 
 <div class="notice">
 <strong>Your customers.</strong><br>
-Job Memory automatically creates customer records from the jobs you add.
+Job Memory automatically creates customer records from your jobs.
 </div>
 
 <div class="card">
@@ -317,17 +573,41 @@ oninput="displayCustomers()">
 
 <div id="documentsPage" class="page">
 
-<div class="card">
+<div class="upload-box">
 
-<h3>Documents & Photos</h3>
+<h3>📁 Add business information</h3>
 
-<p style="color:#667085;margin-bottom:20px">
-This is where we'll eventually store invoices, job photos,
-PDFs, receipts and other business information.
+<p>
+Upload job photos, invoices, receipts, PDFs or other files.
 </p>
 
-<div class="empty">
-📁 Document storage is coming next.
+<label class="file-button">
+＋ Choose Files
+
+<input
+id="documentUpload"
+type="file"
+multiple
+accept="image/*,.pdf,.txt,.doc,.docx"
+onchange="addDocuments()">
+
+</label>
+
+</div>
+
+
+<div class="card">
+
+<h3>Your Documents</h3>
+
+<input
+class="search"
+id="documentSearch"
+placeholder="Search documents..."
+oninput="displayDocuments()">
+
+<div id="documents"
+class="documents">
 </div>
 
 </div>
@@ -343,11 +623,15 @@ PDFs, receipts and other business information.
 
 <h3>Business Settings</h3>
 
-<input placeholder="Business name">
+<input
+id="businessName"
+placeholder="Business name">
 
-<input placeholder="Business email">
+<input
+placeholder="Business email">
 
-<input placeholder="Business phone">
+<input
+placeholder="Business phone">
 
 <button class="primary">
 Save Settings
@@ -365,29 +649,57 @@ Save Settings
 let jobs =
 JSON.parse(localStorage.getItem("jobMemoryJobs")) || [];
 
+let documents =
+JSON.parse(localStorage.getItem("jobMemoryDocuments")) || [];
+
 
 /* NAVIGATION */
 
 function showPage(pageId,button){
 
 document.querySelectorAll(".page")
-.forEach(page=>page.classList.remove("active"));
+.forEach(page =>
+page.classList.remove("active")
+);
 
 document.getElementById(pageId)
 .classList.add("active");
 
 document.querySelectorAll(".nav button")
-.forEach(btn=>btn.classList.remove("active"));
+.forEach(btn =>
+btn.classList.remove("active")
+);
 
 button.classList.add("active");
 
 
 const titles={
-dashboard:["Dashboard","Your company's memory, organized."],
-jobsPage:["Jobs","Your complete job history."],
-customersPage:["Customers","Everyone your business has worked with."],
-documentsPage:["Documents","Your business files and photos."],
-settingsPage:["Settings","Manage your business."]
+
+dashboard:[
+"Dashboard",
+"Your company's memory, organized."
+],
+
+jobsPage:[
+"Jobs",
+"Your complete job history."
+],
+
+customersPage:[
+"Customers",
+"Everyone your business has worked with."
+],
+
+documentsPage:[
+"Documents",
+"Your business files and photos."
+],
+
+settingsPage:[
+"Settings",
+"Manage your business."
+]
+
 };
 
 document.getElementById("pageTitle")
@@ -396,9 +708,14 @@ document.getElementById("pageTitle")
 document.getElementById("pageSubtitle")
 .textContent=titles[pageId][1];
 
-if(pageId==="jobsPage") displayAllJobs();
+if(pageId==="jobsPage")
+displayAllJobs();
 
-if(pageId==="customersPage") displayCustomers();
+if(pageId==="customersPage")
+displayCustomers();
+
+if(pageId==="documentsPage")
+displayDocuments();
 
 }
 
@@ -407,17 +724,21 @@ if(pageId==="customersPage") displayCustomers();
 
 function saveJob(){
 
-const customer=
-document.getElementById("customer").value.trim();
+const customer =
+document.getElementById("customer")
+.value.trim();
 
-const project=
-document.getElementById("project").value.trim();
+const project =
+document.getElementById("project")
+.value.trim();
 
-const location=
-document.getElementById("location").value.trim();
+const location =
+document.getElementById("location")
+.value.trim();
 
-const notes=
-document.getElementById("notes").value.trim();
+const notes =
+document.getElementById("notes")
+.value.trim();
 
 
 if(!customer || !project){
@@ -428,16 +749,16 @@ return;
 }
 
 
-const job={
+jobs.push({
+
 customer,
 project,
 location,
 notes,
 date:new Date().toLocaleDateString()
-};
 
+});
 
-jobs.push(job);
 
 localStorage.setItem(
 "jobMemoryJobs",
@@ -458,14 +779,223 @@ alert("Job saved successfully.");
 }
 
 
-/* DISPLAY EVERYTHING */
+/* DOCUMENT UPLOAD */
 
-function displayEverything(){
+function addDocuments(){
+
+const files =
+document.getElementById("documentUpload")
+.files;
+
+if(!files.length)return;
+
+
+Array.from(files).forEach(file=>{
+
+const documentItem={
+
+id:Date.now()+"-"+Math.random(),
+
+name:file.name,
+
+type:file.type || "File",
+
+size:formatFileSize(file.size),
+
+date:new Date().toLocaleDateString(),
+
+image:null
+
+};
+
+
+if(file.type.startsWith("image/")){
+
+const reader=new FileReader();
+
+reader.onload=function(event){
+
+documentItem.image=event.target.result;
+
+documents.push(documentItem);
+
+saveDocuments();
+
+displayDocuments();
+
+};
+
+reader.readAsDataURL(file);
+
+}else{
+
+documents.push(documentItem);
+
+saveDocuments();
+
+displayDocuments();
+
+}
+
+});
+
+
+document.getElementById("documentUpload").value="";
+
+}
+
+
+/* SAVE DOCUMENTS */
+
+function saveDocuments(){
+
+localStorage.setItem(
+"jobMemoryDocuments",
+JSON.stringify(documents)
+);
 
 updateStats();
-displayRecentJobs();
-displayAllJobs();
-displayCustomers();
+
+}
+
+
+/* DISPLAY DOCUMENTS */
+
+function displayDocuments(){
+
+const container =
+document.getElementById("documents");
+
+if(!container)return;
+
+const search =
+(document.getElementById("documentSearch")
+?.value || "")
+.toLowerCase();
+
+container.innerHTML="";
+
+
+const filtered =
+documents.filter(documentItem =>
+documentItem.name
+.toLowerCase()
+.includes(search)
+);
+
+
+if(filtered.length===0){
+
+container.innerHTML =
+'<div class="empty" style="grid-column:1/-1">No documents yet.</div>';
+
+return;
+
+}
+
+
+filtered.slice().reverse().forEach(documentItem=>{
+
+const div=document.createElement("div");
+
+div.className="document";
+
+
+let icon="📄";
+
+if(documentItem.type.startsWith("image/"))
+icon="📷";
+
+if(documentItem.type==="application/pdf")
+icon="📕";
+
+
+let visual="";
+
+if(documentItem.image){
+
+visual=`
+<img
+class="document-image"
+src="${documentItem.image}">
+`;
+
+}else{
+
+visual=`
+<div class="document-icon">
+${icon}
+</div>
+`;
+
+}
+
+
+div.innerHTML=`
+
+${visual}
+
+<div class="document-name">
+${escapeHTML(documentItem.name)}
+</div>
+
+<div class="document-info">
+
+${escapeHTML(documentItem.size)}
+<br>
+
+Added ${escapeHTML(documentItem.date)}
+
+</div>
+
+<button
+class="delete-btn"
+onclick="deleteDocument('${documentItem.id}')">
+
+Delete
+
+</button>
+
+`;
+
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* DELETE DOCUMENT */
+
+function deleteDocument(id){
+
+if(!confirm("Delete this document?"))
+return;
+
+documents =
+documents.filter(documentItem =>
+documentItem.id !== id
+);
+
+saveDocuments();
+
+displayDocuments();
+
+}
+
+
+/* FILE SIZE */
+
+function formatFileSize(bytes){
+
+if(bytes<1024)
+return bytes+" B";
+
+if(bytes<1024*1024)
+return (bytes/1024).toFixed(1)+" KB";
+
+return (bytes/(1024*1024)).toFixed(1)+" MB";
 
 }
 
@@ -478,11 +1008,16 @@ document.getElementById("jobCount")
 .textContent=jobs.length;
 
 const customers=new Set(
-jobs.map(job=>job.customer.toLowerCase())
+jobs.map(job =>
+job.customer.toLowerCase()
+)
 );
 
 document.getElementById("customerCount")
 .textContent=customers.size;
+
+document.getElementById("documentCount")
+.textContent=documents.length;
 
 }
 
@@ -491,18 +1026,19 @@ document.getElementById("customerCount")
 
 function displayRecentJobs(){
 
-const container=
+const container =
 document.getElementById("recentJobs");
 
 container.innerHTML="";
 
 
-const recent=jobs.slice(-5).reverse();
+const recent =
+jobs.slice(-5).reverse();
 
 
-if(recent.length===0){
+if(!recent.length){
 
-container.innerHTML=
+container.innerHTML =
 '<div class="empty">No jobs yet.</div>';
 
 return;
@@ -520,9 +1056,13 @@ div.innerHTML=`
 
 <h4>${escapeHTML(job.project)}</h4>
 
-<p><strong>${escapeHTML(job.customer)}</strong></p>
+<p>
+<strong>${escapeHTML(job.customer)}</strong>
+</p>
 
-<p>${escapeHTML(job.location)}</p>
+<p>
+${escapeHTML(job.location)}
+</p>
 
 `;
 
@@ -537,33 +1077,37 @@ container.appendChild(div);
 
 function displayAllJobs(){
 
-const container=
+const container =
 document.getElementById("allJobs");
 
 if(!container)return;
 
-const search=
-(document.getElementById("jobSearch")?.value || "")
+const search =
+(document.getElementById("jobSearch")
+?.value || "")
 .toLowerCase();
 
 container.innerHTML="";
 
 
-const filtered=jobs.filter(job=>
+const filtered =
+jobs.filter(job=>
 
-(job.customer+" "+
+(
+job.customer+" "+
 job.project+" "+
 job.location+" "+
-job.notes)
+job.notes
+)
 .toLowerCase()
 .includes(search)
 
 );
 
 
-if(filtered.length===0){
+if(!filtered.length){
 
-container.innerHTML=
+container.innerHTML =
 '<div class="empty">No jobs found.</div>';
 
 return;
@@ -571,7 +1115,8 @@ return;
 }
 
 
-filtered.slice().reverse().forEach(job=>{
+filtered.slice().reverse()
+.forEach(job=>{
 
 const div=document.createElement("div");
 
@@ -613,13 +1158,14 @@ container.appendChild(div);
 
 function displayCustomers(){
 
-const container=
+const container =
 document.getElementById("customers");
 
 if(!container)return;
 
-const search=
-(document.getElementById("customerSearch")?.value || "")
+const search =
+(document.getElementById("customerSearch")
+?.value || "")
 .toLowerCase();
 
 container.innerHTML="";
@@ -630,7 +1176,9 @@ const customerMap={};
 
 jobs.forEach(job=>{
 
-const key=job.customer.toLowerCase();
+const key =
+job.customer.toLowerCase();
+
 
 if(!customerMap[key]){
 
@@ -644,26 +1192,33 @@ locations:[]
 
 customerMap[key].jobs++;
 
-if(job.location &&
-!customerMap[key].locations.includes(job.location)){
 
-customerMap[key].locations.push(job.location);
+if(
+job.location &&
+!customerMap[key]
+.locations.includes(job.location)
+){
+
+customerMap[key]
+.locations.push(job.location);
 
 }
 
 });
 
 
-const customers=
+const customers =
 Object.values(customerMap)
 .filter(customer=>
-customer.name.toLowerCase().includes(search)
+customer.name
+.toLowerCase()
+.includes(search)
 );
 
 
-if(customers.length===0){
+if(!customers.length){
 
-container.innerHTML=
+container.innerHTML =
 '<div class="empty">No customers found.</div>';
 
 return;
@@ -682,14 +1237,22 @@ div.innerHTML=`
 <div>
 
 <div class="customer-name">
+
 ${escapeHTML(customer.name)}
+
 </div>
 
 <div class="customer-info">
-${customer.jobs} job${customer.jobs===1?"":"s"}
+
+${customer.jobs}
+job${customer.jobs===1?"":"s"}
+
 ${customer.locations.length
-? " • "+escapeHTML(customer.locations.join(", "))
-: ""}
+?" • "+escapeHTML(
+customer.locations.join(", ")
+)
+:""}
+
 </div>
 
 </div>
@@ -709,57 +1272,66 @@ container.appendChild(div);
 
 function askMemory(){
 
-const question=
+const question =
 document.getElementById("question")
 .value
 .toLowerCase()
 .trim();
 
-const answer=
+const answer =
 document.getElementById("answer");
 
 
 if(!question)return;
 
 
-const words=
-question.split(/\s+/)
+const words =
+question
+.split(/\s+/)
 .filter(word=>word.length>2);
 
 
-const matches=jobs.filter(job=>{
+const matches =
+jobs.filter(job=>{
 
 const text=(
 job.customer+" "+
 job.project+" "+
 job.location+" "+
 job.notes
-).toLowerCase();
+)
+.toLowerCase();
 
-return words.some(word=>text.includes(word));
+return words.some(word =>
+text.includes(word)
+);
 
 });
 
 
 if(matches.length){
 
-answer.innerHTML=
+answer.innerHTML =
 "<strong>I found:</strong><br><br>"+
 
 matches.map(job=>`
 
-<strong>${escapeHTML(job.project)}</strong>
+<strong>
+${escapeHTML(job.project)}
+</strong>
 — ${escapeHTML(job.customer)}
 
-<br>${escapeHTML(job.location)}
+<br>
+${escapeHTML(job.location)}
 
-<br>${escapeHTML(job.notes)}
+<br>
+${escapeHTML(job.notes)}
 
 `).join("<br><br>");
 
 }else{
 
-answer.innerHTML=
+answer.innerHTML =
 "I couldn't find anything matching that question yet.";
 
 }
@@ -769,11 +1341,12 @@ answer.style.display="block";
 }
 
 
-/* ESCAPE TEXT */
+/* SECURITY */
 
 function escapeHTML(text){
 
 return String(text || "")
+
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -783,7 +1356,15 @@ return String(text || "")
 }
 
 
-displayEverything();
+/* START */
+
+updateStats();
+
+displayRecentJobs();
+
+displayAllJobs();
+
+displayCustomers();
 
 </script>
 
