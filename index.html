@@ -1,235 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeadLine AI - AI Receptionist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Memory</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3f5f7;
+    color: #17202a;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 22px 30px;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+header p {
+    margin-top: 5px;
+    color: #b8c2cc;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.hero {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.hero h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    color: #667085;
+}
+
+.ask-box {
+    margin-top: 22px;
+    display: flex;
+    gap: 10px;
+}
+
+.ask-box input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+button {
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #293548;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.card h3 {
+    margin-bottom: 18px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.job {
+    border: 1px solid #e1e5ea;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.job h4 {
+    margin-bottom: 5px;
+}
+
+.job p {
+    color: #667085;
+    margin: 4px 0;
+}
+
+.answer {
+    margin-top: 15px;
+    background: #eef2ff;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+}
+
+.photo-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.photo-preview img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.empty {
+    color: #98a2b3;
+    text-align: center;
+    padding: 25px;
+}
+
+@media(max-width: 750px) {
+    .grid {
+        grid-template-columns: 1fr;
     }
 
-    body {
-      background: #f4f6f8;
-      color: #111827;
+    .ask-box {
+        flex-direction: column;
     }
-
-    .header {
-      background: #111827;
-      color: white;
-      padding: 22px;
-      text-align: center;
-    }
-
-    .header h1 {
-      font-size: 28px;
-    }
-
-    .header p {
-      margin-top: 6px;
-      color: #cbd5e1;
-    }
-
-    .chat-container {
-      max-width: 650px;
-      margin: 35px auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    .business {
-      padding: 20px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .business h2 {
-      font-size: 20px;
-    }
-
-    .business p {
-      color: #6b7280;
-      margin-top: 4px;
-    }
-
-    #chat {
-      height: 420px;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .message {
-      margin-bottom: 15px;
-      padding: 12px 15px;
-      border-radius: 14px;
-      max-width: 80%;
-      line-height: 1.4;
-    }
-
-    .ai {
-      background: #eef2ff;
-      margin-right: auto;
-    }
-
-    .user {
-      background: #111827;
-      color: white;
-      margin-left: auto;
-    }
-
-    .input-area {
-      display: flex;
-      border-top: 1px solid #e5e7eb;
-      padding: 12px;
-      gap: 10px;
-    }
-
-    #messageInput {
-      flex: 1;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      padding: 13px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    button {
-      border: none;
-      background: #111827;
-      color: white;
-      padding: 13px 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #374151;
-    }
-
-    .footer {
-      text-align: center;
-      color: #9ca3af;
-      font-size: 12px;
-      padding: 15px;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>LeadLine AI</h1>
-    <p>Your 24/7 AI Receptionist</p>
-  </div>
+<header>
+    <h1>Job Memory</h1>
+    <p>Your company's memory, organized.</p>
+</header>
 
-  <div class="chat-container">
+<div class="container">
 
-    <div class="business">
-      <h2>Kelly Contracting</h2>
-      <p>Ask us about your next project.</p>
+    <div class="hero">
+        <h2>Ask your business anything.</h2>
+        <p>
+            Search your past jobs, notes, customers and project information.
+        </p>
+
+        <div class="ask-box">
+            <input
+                id="question"
+                placeholder="Example: What jobs did we do for John?"
+            >
+            <button onclick="askMemory()">Ask</button>
+        </div>
+
+        <div id="answer" class="answer"></div>
     </div>
 
-    <div id="chat">
-      <div class="message ai">
-        Hi! 👋 I'm Kelly Contracting's AI receptionist. 
-        How can I help you today?
-      </div>
+    <div class="grid">
+
+        <div class="card">
+            <h3>Add a Job</h3>
+
+            <input id="customer" placeholder="Customer name">
+
+            <input id="project" placeholder="Project name">
+
+            <input id="location" placeholder="Location">
+
+            <textarea
+                id="notes"
+                placeholder="Job notes, materials, measurements, prices, etc."
+            ></textarea>
+
+            <label>
+                Add job photos:
+                <input
+                    id="photos"
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onchange="previewPhotos()"
+                >
+            </label>
+
+            <div id="photoPreview" class="photo-preview"></div>
+
+            <button onclick="saveJob()">
+                Save Job
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Your Jobs</h3>
+
+            <input
+                id="search"
+                placeholder="Search jobs..."
+                oninput="displayJobs()"
+            >
+
+            <div id="jobs"></div>
+        </div>
+
     </div>
+</div>
 
-    <div class="input-area">
-      <input
-        id="messageInput"
-        type="text"
-        placeholder="Type your message..."
-        onkeydown="handleKey(event)"
-      >
+<script>
 
-      <button onclick="sendMessage()">Send</button>
-    </div>
+let jobs = JSON.parse(localStorage.getItem("jobMemoryJobs")) || [];
 
-    <div class="footer">
-      Powered by LeadLine AI
-    </div>
+function saveJob() {
 
-  </div>
+    const customer = document.getElementById("customer").value.trim();
+    const project = document.getElementById("project").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const notes = document.getElementById("notes").value.trim();
 
-  <script>
-
-    let conversationStep = 0;
-
-    function addMessage(text, type) {
-      const chat = document.getElementById("chat");
-
-      const message = document.createElement("div");
-      message.className = "message " + type;
-      message.textContent = text;
-
-      chat.appendChild(message);
-      chat.scrollTop = chat.scrollHeight;
+    if (!customer || !project) {
+        alert("Please enter a customer name and project name.");
+        return;
     }
 
-    function sendMessage() {
+    const job = {
+        customer: customer,
+        project: project,
+        location: location,
+        notes: notes,
+        date: new Date().toLocaleDateString()
+    };
 
-      const input = document.getElementById("messageInput");
-      const text = input.value.trim();
+    jobs.push(job);
 
-      if (!text) return;
+    localStorage.setItem(
+        "jobMemoryJobs",
+        JSON.stringify(jobs)
+    );
 
-      addMessage(text, "user");
-      input.value = "";
+    document.getElementById("customer").value = "";
+    document.getElementById("project").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("notes").value = "";
+    document.getElementById("photos").value = "";
+    document.getElementById("photoPreview").innerHTML = "";
 
-      setTimeout(() => {
+    displayJobs();
 
-        let response;
+    alert("Job saved!");
+}
 
-        if (conversationStep === 0) {
+function displayJobs() {
 
-          response =
-            "Absolutely! I'd be happy to help. What type of project are you looking to have done?";
+    const container = document.getElementById("jobs");
+    const search = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
 
-          conversationStep = 1;
+    container.innerHTML = "";
 
-        } else if (conversationStep === 1) {
+    const filtered = jobs.filter(job =>
+        job.customer.toLowerCase().includes(search) ||
+        job.project.toLowerCase().includes(search) ||
+        job.location.toLowerCase().includes(search) ||
+        job.notes.toLowerCase().includes(search)
+    );
 
-          response =
-            "Great. About how large is the project, and what town or area is the property located in?";
-
-          conversationStep = 2;
-
-        } else if (conversationStep === 2) {
-
-          response =
-            "Thanks! What's your name and the best phone number for the contractor to contact you?";
-
-          conversationStep = 3;
-
-        } else {
-
-          response =
-            "Perfect. I've recorded your information. A member of the team will review your request and contact you as soon as possible. 👍";
-
-          conversationStep = 4;
-
-        }
-
-        addMessage(response, "ai");
-
-      }, 700);
+    if (filtered.length === 0) {
+        container.innerHTML =
+            '<div class="empty">No jobs found.</div>';
+        return;
     }
 
-    function handleKey(event) {
-      if (event.key === "Enter") {
-        sendMessage();
-      }
+    filtered.forEach(job => {
+
+        const div = document.createElement("div");
+        div.className = "job";
+
+        div.innerHTML = `
+            <h4>${escapeHTML(job.project)}</h4>
+            <p><strong>Customer:</strong> ${escapeHTML(job.customer)}</p>
+            <p><strong>Location:</strong> ${escapeHTML(job.location)}</p>
+            <p><strong>Notes:</strong> ${escapeHTML(job.notes)}</p>
+            <p><small>Added ${escapeHTML(job.date)}</small></p>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function askMemory() {
+
+    const question = document
+        .getElementById("question")
+        .value
+        .toLowerCase();
+
+    const answer = document.getElementById("answer");
+
+    if (!question) return;
+
+    const matches = jobs.filter(job =>
+        question.includes(job.customer.toLowerCase()) ||
+        question.includes(job.project.toLowerCase()) ||
+        question.includes(job.location.toLowerCase())
+    );
+
+    if (matches.length > 0) {
+
+        answer.innerHTML =
+            "<strong>I found these jobs:</strong><br><br>" +
+            matches.map(job =>
+                `${escapeHTML(job.project)} — ${escapeHTML(job.customer)} (${escapeHTML(job.location)})`
+            ).join("<br>");
+
+    } else {
+
+        answer.innerHTML =
+            "I couldn't find a matching job yet. Once more information is added, I'll be able to search it.";
+
     }
 
-  </script>
+    answer.style.display = "block";
+}
+
+function previewPhotos() {
+
+    const files = document.getElementById("photos").files;
+    const preview = document.getElementById("photoPreview");
+
+    preview.innerHTML = "";
+
+    for (let file of files) {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const img = document.createElement("img");
+
+            img.src = e.target.result;
+
+            preview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+displayJobs();
+
+</script>
 
 </body>
 </html>
